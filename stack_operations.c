@@ -31,6 +31,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		*stack = element;
 		reference.head =  *stack;
+		reference.tail = reference.head;
 	}
 	else
 	{
@@ -85,4 +86,22 @@ void delete_stack(stack_t **stack)
 
 		temp = next;
 	}
+}
+
+/**
+ * pint - Prints the value at the top of the stack
+ *
+ * @stack: A reference to The stack
+ * @line_number: Current line in the file
+ *
+ * Return: void (Nothing)
+ */
+void pint(stack_t **stack, u_int line_number)
+{
+	/* unsude variables */
+	(void)line_number;
+	(void)stack;
+
+	/* output last node data in the stack */
+	printf("%d\n", reference.tail->n);
 }

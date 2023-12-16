@@ -84,10 +84,11 @@ Op_func get_operation(const char *opcode, instruction_t *mapped)
 instruction_t *create_map_structure(FILE *file)
 {
 	int i;
-	char *opcodes[] = {"push", "pall", NULL};
-	Op_func const operations[] = {push, pall, NULL};
 
-	instruction_t *mapped = malloc(sizeof(instruction_t) * 3);
+	char *opcodes[] = {"push", "pall", "pint", NULL};
+	Op_func const operations[] = {push, pall, pint, NULL};
+
+	instruction_t *mapped = malloc(sizeof(instruction_t) * 4);
 	/* Memory allocation failed */
 	if (!mapped)
 	{

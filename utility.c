@@ -112,8 +112,20 @@ void handle_errors(memory_record *memory, u_int line_number)
 		/* an integer is not passed */
 		if (!reference.tokens[1] || !digits(reference.tokens[1]))
 		{
-			free_records(memory), deleteTokens();
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+			free_records(memory), deleteTokens();
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	/* Handle error for pint */
+	if (!strcmp(opcode, "pint"))
+	{
+		/* stack is empty so can't pint */
+		if (!reference.tail)
+		{
+			dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+			free_records(memory), deleteTokens();
 			exit(EXIT_FAILURE);
 		}
 	}

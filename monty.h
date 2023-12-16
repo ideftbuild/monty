@@ -97,6 +97,7 @@ int getNumOfTokens(char *, const char *);
 void handle_errors(memory_record *, u_int);
 instruction_t *create_map_structure(FILE *);
 int check_instruction(Op_func, char *, u_int);
+void pint(stack_t **stack, u_int line_number);
 void freeMem(FILE *, instruction_t *, char *);
 Op_func get_operation(const char *, instruction_t *);
 void initialize_record(memory_record *, stack_t **, char *);
