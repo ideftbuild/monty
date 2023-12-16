@@ -26,7 +26,7 @@ void interpret(FILE *file, stack_t **stack)
 
 		if (parse_line(&memory, line))
 		{
-			free_line(&line);
+			free_line(&line), line_number++;
 			continue;
 		}
 		/* get the operation to execute */
