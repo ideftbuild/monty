@@ -71,6 +71,10 @@ Op_func get_operation(const char *opcode, instruction_t *mapped)
 		i++;
 	}
 
+	/* For commenting of lines only */
+	if (!strncmp(opcode, "#", 1))
+		return (comment);
+
 	return (NULL);
 }
 
