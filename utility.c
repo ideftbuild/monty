@@ -109,7 +109,7 @@ void handle_errors(memory_record *memory, u_int line_number)
 		if (!reference.tokens[1] || !digits(reference.tokens[1]))
 		{
 			free_records(memory), deleteTokens();
-			dprintf(STDERR_FILENO, "L<%d>: usage: push integer\n", line_number);
+			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 	}

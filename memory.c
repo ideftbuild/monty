@@ -14,7 +14,7 @@ FILE *open_file(const char *file)
 
 	if (!pFile)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file <%s>\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 	return (pFile);

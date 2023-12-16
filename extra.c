@@ -14,7 +14,7 @@ int check_instruction(Op_func operation, char *opcode, u_int line_number)
 	/* instruction is not valid */
 	if (!operation)
 	{
-		dprintf(STDERR_FILENO, "L<%d>: unknown instruction <%s>\n",
+		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
 				line_number, opcode);
 		deleteTokens();
 		return (1);
