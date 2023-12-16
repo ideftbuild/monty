@@ -28,6 +28,9 @@ void check_usage(int ac)
  */
 int digits(char *str)
 {
+	if (*str == '-')  /* negative number */
+		str++;
+
 	while (*str)
 	{
 		if (!(*str >= '0' && *str <= '9'))
@@ -102,7 +105,7 @@ int parse_line(memory_record *memory, char *line)
  */
 void handle_errors(memory_record *memory, u_int line_number)
 {
-	char *opcode = reference.tokens[0];
+	const char *opcode = reference.tokens[0];
 	/* Handle error for push */
 	if (!strcmp(opcode, "push"))
 	{
@@ -111,16 +114,6 @@ void handle_errors(memory_record *memory, u_int line_number)
 		{
 			free_records(memory), deleteTokens();
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-	}
-	/* Handle error for pall */
-	if (!strcmp(opcode, "pall"))
-	{
-		if (reference.tokens[1])
-		{
-			free_records(memory), deleteTokens();
-			dprintf(STDERR_FILENO, "L%d: usage: pall\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 	}
