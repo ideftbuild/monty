@@ -81,25 +81,21 @@ typedef unsigned int u_int;
 typedef void (*Op_func)(stack_t **, u_int);
 
 /* Function Protypes */
-void display(void);
-int digits(char *);
-void check_usage(int);
-void deleteTokens(void);
-void free_line(char **);
-FILE *open_file(const char *);
 void delete_stack(stack_t **);
 void free_records(memory_record *);
 void interpret(FILE *, stack_t **);
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
-int parse_line(memory_record *, char *);
-int getNumOfTokens(char *, const char *);
 void handle_errors(memory_record *, u_int);
 instruction_t *create_map_structure(FILE *);
+void pop(stack_t **stack, u_int line_number);
 int check_instruction(Op_func, char *, u_int);
 void pint(stack_t **stack, u_int line_number);
 void freeMem(FILE *, instruction_t *, char *);
 Op_func get_operation(const char *, instruction_t *);
+void pop_error(memory_record *memory, u_int line_number);
+void push_error(memory_record *memory, u_int line_number);
+void pint_error(memory_record *memory, u_int line_number);
 void initialize_record(memory_record *, stack_t **, char *);
 
 #endif /* MONT_H */
