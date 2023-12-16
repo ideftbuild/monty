@@ -39,6 +39,7 @@ void push(stack_t **stack, unsigned int line_number)
 		element->next = *stack;
 		element->prev = NULL;
 		*stack = element;
+		reference.tail = *stack;
 	}
 }
 
