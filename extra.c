@@ -61,3 +61,14 @@ int getNumOfTokens(char *copy, const char *delim)
 
 	return (count + 1);
 }
+
+/**
+ * nop - Doesn’t do anything.
+ *
+ * @stack: Reference to the stack
+ * @line_number: Current line in the file
+ *
+ * Return: void (Nothing)
+ */
+void nop(stack_t **stack, u_int line_number)
+	{ (void)stack, (void)line_number; }
