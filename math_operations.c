@@ -85,7 +85,6 @@ void _div(stack_t **stack, u_int line_number)
 
 	result = num2 / num1; /* sum */
 
-	printf("%f / %f = %f\n", num2, num1, result);
 	pop(stack, line_number); /* remove top of node*/
 
 	reference.tail->n = result;  /* new top node containing result */
