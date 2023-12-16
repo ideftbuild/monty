@@ -110,27 +110,22 @@ void handle_errors(memory_record *memory, u_int line_number)
 
 	if (!strcmp(opcode, "push"))
 		push_error(memory, line_number);
-
 	if (!strcmp(opcode, "pint"))
 		pint_error(memory, line_number);
-
 	if (!strcmp(opcode, "pop"))
 		pop_error(memory, line_number);
-
 	if (!strcmp(opcode, "swap"))
 		swap_error(memory, line_number);
-
 	if (!strcmp(opcode, "add"))
 		add_error(memory, line_number);
-
 	if (!strcmp(opcode, "sub"))
 		sub_error(memory, line_number);
-
 	if (!strcmp(opcode, "div"))
 		div_error(memory, line_number);
-
 	if (!strcmp(opcode, "mul"))
 		mul_error(memory, line_number);
+	if (!strcmp(opcode, "mod"))
+		mod_error(memory, line_number);
 	/* Handle other operation errors */
 }
 

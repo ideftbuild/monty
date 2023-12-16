@@ -72,7 +72,7 @@ void _div(stack_t **stack, u_int line_number)
 	num1 = reference.tail->n;
 	num2 = reference.tail->next->n;
 
-	result = num2 / num1; /* sum */
+	result = num2 / num1; /* divide */
 
 	pop(stack, line_number); /* remove top of node*/
 
@@ -99,7 +99,34 @@ void mul(stack_t **stack, u_int line_number)
 	num1 = reference.tail->n;
 	num2 = reference.tail->next->n;
 
-	result = num2 * num1; /* sum */
+	result = num2 * num1; /* multiply */
+
+	pop(stack, line_number); /* remove top of node*/
+
+	reference.tail->n = result;  /* new top node containing result */
+}
+
+/**
+ * mod - Remainder the second top element of the stack
+ * by the top element of the stack
+ *
+ * @stack: Reference to the stack
+ * @line_number: line_number
+ *
+ * Return: void (Nothing)
+ */
+void mod(stack_t **stack, u_int line_number)
+{
+	int num1, num2;
+	int result;
+
+	(void)line_number;  /* unsused variable */
+
+	/* Get the integer */
+	num1 = reference.tail->n;
+	num2 = reference.tail->next->n;
+
+	result = num2 % num1; /* remainder */
 
 	pop(stack, line_number); /* remove top of node*/
 
