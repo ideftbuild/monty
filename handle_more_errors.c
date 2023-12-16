@@ -25,7 +25,7 @@ void sub_error(memory_record *memory, u_int line_number)
 	/* number of node is less than 2, so can't swap */
 	if (count != 2)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", line_number);
 		free_records(memory), deleteTokens();
 		exit(EXIT_FAILURE);
 	}
