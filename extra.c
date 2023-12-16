@@ -1,4 +1,5 @@
 #include "monty.h"
+#include "utility.h"
 
 /**
  * check_instruction - Checks if the instruction passed is valid

@@ -1,4 +1,5 @@
 #include "monty.h"
+#include "utility.h"
 
 /**
  * interpret - Inteprets line by line
@@ -85,10 +86,10 @@ instruction_t *create_map_structure(FILE *file)
 {
 	int i;
 
-	char *opcodes[] = {"push", "pall", "pint", NULL};
-	Op_func const operations[] = {push, pall, pint, NULL};
+	char *opcodes[] = {"push", "pop", "pall", "pint", NULL};
+	Op_func const operations[] = {push, pop, pall, pint, NULL};
 
-	instruction_t *mapped = malloc(sizeof(instruction_t) * 4);
+	instruction_t *mapped = malloc(sizeof(instruction_t) * 5);
 	/* Memory allocation failed */
 	if (!mapped)
 	{

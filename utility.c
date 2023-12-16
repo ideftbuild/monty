@@ -1,4 +1,5 @@
 #include "monty.h"
+#include "utility.h"
 
 /**
  * check_usage - Checks if the user matches the required usage
@@ -108,27 +109,13 @@ void handle_errors(memory_record *memory, u_int line_number)
 	const char *opcode = reference.tokens[0];
 	/* Handle error for push */
 	if (!strcmp(opcode, "push"))
-	{
-		/* an integer is not passed */
-		if (!reference.tokens[1] || !digits(reference.tokens[1]))
-		{
-			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-			free_records(memory), deleteTokens();
-			exit(EXIT_FAILURE);
-		}
-	}
-
+		push_error(memory, line_number);
 	/* Handle error for pint */
 	if (!strcmp(opcode, "pint"))
-	{
-		/* stack is empty so can't pint */
-		if (!reference.tail)
-		{
-			dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-			free_records(memory), deleteTokens();
-			exit(EXIT_FAILURE);
-		}
-	}
+		pint_error(memory, line_number);
+	/* Handle error for pop */
+	if (!strcmp(opcode, "pop"))
+		pop_error(memory, line_number);
 	/* Handle other operation errors */
 }
 

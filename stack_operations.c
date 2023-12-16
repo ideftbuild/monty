@@ -1,4 +1,5 @@
 #include "monty.h"
+#include "utility.h"
 
 /**
  * push - Push element on the stack
@@ -104,4 +105,31 @@ void pint(stack_t **stack, u_int line_number)
 
 	/* output last node data in the stack */
 	printf("%d\n", reference.tail->n);
+}
+
+/**
+ * pop - Removes the node at the top of the stack
+ *
+ * @stack: Reference to the stack
+ * @line_number: Currnt line in the filei
+ *
+ * Return: void (Nothing)
+ */
+void pop(stack_t **stack, u_int line_number)
+{
+	stack_t *next = NULL;
+	/* unused variables */
+	(void)line_number;
+	(void)stack;
+
+	/* pop from top of stack */
+	next = reference.tail->next;
+	free(reference.tail);  /* delete current top */
+
+	/* new top */
+	*stack = next;
+	reference.tail = *stack;
+
+	if (reference.tail)
+		reference.tail->prev = NULL;
 }

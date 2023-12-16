@@ -1,4 +1,5 @@
 #include "monty.h"
+#include "utility.h"
 
 struct store reference;
 
