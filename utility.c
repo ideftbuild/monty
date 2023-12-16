@@ -116,6 +116,9 @@ void handle_errors(memory_record *memory, u_int line_number)
 	/* Handle error for pop */
 	if (!strcmp(opcode, "pop"))
 		pop_error(memory, line_number);
+
+	if (!strcmp(opcode, "swap"))
+		swap_error(memory, line_number);
 	/* Handle other operation errors */
 }
 

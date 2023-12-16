@@ -64,3 +64,26 @@ void free_line(char **line)
 	free(*line);
 	*line = NULL;
 }
+
+/**
+ * delete_stack - Deletes the stack
+ *
+ * @stack: Reference of the pointer to the first element
+ *
+ * Return: void (Nothing)
+ */
+void delete_stack(stack_t **stack)
+{
+	stack_t *temp = *stack;
+
+	while (temp)
+	{
+		stack_t *next = temp->next;
+
+		temp->prev = NULL;
+
+		free(temp);
+
+		temp = next;
+	}
+}

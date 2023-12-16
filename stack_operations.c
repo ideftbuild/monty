@@ -66,28 +66,6 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
-/**
- * delete_stack - Deletes the stack
- *
- * @stack: Reference of the pointer to the first element
- *
- * Return: void (Nothing)
- */
-void delete_stack(stack_t **stack)
-{
-	stack_t *temp = *stack;
-
-	while (temp)
-	{
-		stack_t *next = temp->next;
-
-		temp->prev = NULL;
-
-		free(temp);
-
-		temp = next;
-	}
-}
 
 /**
  * pint - Prints the value at the top of the stack
@@ -132,4 +110,41 @@ void pop(stack_t **stack, u_int line_number)
 
 	if (reference.tail)
 		reference.tail->prev = NULL;
+}
+/**
+ * swap - Swaps the top two elements of the stack
+ *
+ * @stack: Reference to the stack
+ * @line_number: Current line in the file
+ *
+ * Return: void (Nothing)
+ */
+void swap(stack_t **stack, u_int line_number)
+{
+	stack_t *temp2 = NULL;
+	stack_t *temp1 = reference.tail->next->next;
+
+	(void)line_number;  /* unused variable */
+
+	/* second node next to first */
+	reference.tail->next->next = reference.tail;
+
+	/* second node previous to null */
+	reference.tail->next->prev = NULL;
+
+	/* point first node previous to second */
+	reference.tail->prev  = reference.tail->next;
+
+	/* point third node previous to first node */
+	if (temp1)
+		temp1->prev = reference.tail;
+
+	temp2 = reference.tail->next;
+
+	/* point first node next to third node */
+	reference.tail->next = temp1;
+
+	/* new top of stack */
+	*stack = temp2;
+	reference.tail = *stack;
 }
