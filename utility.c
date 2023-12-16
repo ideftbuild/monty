@@ -102,8 +102,9 @@ int parse_line(memory_record *memory, char *line)
  */
 void handle_errors(memory_record *memory, u_int line_number)
 {
+	char *opcode = reference.tokens[0];
 	/* Handle error for push */
-	if (!strcmp(reference.tokens[0], "push"))
+	if (!strcmp(opcode, "push"))
 	{
 		/* an integer is not passed */
 		if (!reference.tokens[1] || !digits(reference.tokens[1]))
@@ -113,7 +114,16 @@ void handle_errors(memory_record *memory, u_int line_number)
 			exit(EXIT_FAILURE);
 		}
 	}
-
+	/* Handle error for pall */
+	if (!strcmp(opcode, "pall"))
+	{
+		if (reference.tokens[1])
+		{
+			free_records(memory), deleteTokens();
+			dprintf(STDERR_FILENO, "L%d: usage: pall\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
 	/* Handle other operation errors */
 }
 
