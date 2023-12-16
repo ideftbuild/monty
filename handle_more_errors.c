@@ -30,3 +30,40 @@ void sub_error(memory_record *memory, u_int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * div_error - Handle error for div opcode
+ *
+ * @memory: Stores memory address that was allocated
+ * @line_number: Current line in the file
+ *
+ * Return: void (Nothing)
+ */
+void div_error(memory_record *memory, u_int line_number)
+{
+	short count;
+	stack_t *temp = *(memory->stack);
+
+	/* Check if number of nodes is at least 2 */
+	count = 0;
+	while (temp && count < 2)
+	{
+		temp = temp->next;
+		count++;
+	}
+
+	/* number of node is less than 2, so can't swap */
+	if (count != 2)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", line_number);
+		free_records(memory), deleteTokens();
+		exit(EXIT_FAILURE);
+	}
+
+	if (!reference.tail->n)
+	{
+		dprintf(STDERR_FILENO, "L%d: division by zero\n", line_number);
+		free_records(memory), deleteTokens();
+		exit(EXIT_FAILURE);
+	}
+}

@@ -81,6 +81,7 @@ typedef unsigned int u_int;
 typedef void (*Op_func)(stack_t **, u_int);
 
 /* Function Protypes */
+void _div(stack_t **, u_int);
 void add(stack_t **, u_int);
 void nop(stack_t **, u_int);
 void sub(stack_t **, u_int);
@@ -95,6 +96,7 @@ void pall(stack_t **, unsigned int);
 void pop_error(memory_record*, u_int);
 void sub_error(memory_record *, u_int);
 void add_error(memory_record *, u_int);
+void div_error(memory_record *, u_int);
 void push_error(memory_record *, u_int);
 void pint_error(memory_record *, u_int);
 void swap_error(memory_record *, u_int );
