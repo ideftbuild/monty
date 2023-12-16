@@ -18,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -35,12 +35,12 @@ typedef struct stack_s
  */
 typedef struct store
 {
-        char **tokens;
+	char **tokens;
 
-        /* first and last node in the list */
-        stack_t *tail;
-        stack_t *head;
-}store;
+	/* first and last node in the list */
+	stack_t *tail;
+	stack_t *head;
+} store;
 extern store reference;
 
 /**
@@ -53,8 +53,8 @@ extern store reference;
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
@@ -69,12 +69,12 @@ typedef struct instruction_s
  */
 typedef struct addresses
 {
-        FILE *file;
-        stack_t **stack;
-        instruction_t *mapped;
-        char *line;
+	FILE *file;
+	stack_t **stack;
+	instruction_t *mapped;
+	char *line;
 
-}memory_record;
+} memory_record;
 
 /* Alias */
 typedef unsigned int u_int;

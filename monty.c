@@ -2,6 +2,14 @@
 
 struct store reference;
 
+/**
+ * main - An interpreter for monty bytecode
+ *
+ * @ac: Number of arguments passed
+ * @av: The arguments
+ *
+ * Return: Always 0 (Succes)
+ */
 int main(int ac, char **av)
 {
 	FILE *file = NULL;
