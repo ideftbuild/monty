@@ -86,10 +86,10 @@ instruction_t *create_map_structure(FILE *file)
 {
 	int i;
 
-	char *opcodes[] = {"push", "pop", "pall", "pint", "add", "swap", NULL};
-	Op_func const operations[] = {push, pop, pall, pint, add, swap, NULL};
+	char *opcodes[] = {"push", "pop", "pall", "pint", "add", "swap", "nop", NULL};
+	Op_func const operations[] = {push, pop, pall, pint, add, swap, nop, NULL};
 
-	instruction_t *mapped = malloc(sizeof(instruction_t) * 7);
+	instruction_t *mapped = malloc(sizeof(instruction_t) * 8);
 	/* Memory allocation failed */
 	if (!mapped)
 	{

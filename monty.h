@@ -82,6 +82,7 @@ typedef void (*Op_func)(stack_t **, u_int);
 
 /* Function Protypes */
 void add(stack_t **, u_int);
+void nop(stack_t **, u_int);
 void pop(stack_t **, u_int);
 void pint(stack_t **, u_int);
 void swap(stack_t **, u_int);
