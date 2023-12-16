@@ -91,6 +91,7 @@ void pint(stack_t **, u_int);
 void _div(stack_t **, u_int);
 void swap(stack_t **, u_int);
 void delete_stack(stack_t **);
+void comment(stack_t **, u_int);
 void free_records(memory_record *);
 void interpret(FILE *, stack_t **);
 void push(stack_t **, unsigned int);
