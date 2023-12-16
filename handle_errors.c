@@ -90,7 +90,7 @@ void swap_error(memory_record *memory, u_int line_number)
 }
 
 /**
- * add_error - Handle error for swap opcode
+ * add_error - Handle error for add opcode
  *
  * @memory: Stores memory address that was allocated
  * @line_number: Current line in the file
