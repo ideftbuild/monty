@@ -91,11 +91,11 @@ instruction_t *create_map_structure(FILE *file)
 	int i;
 
 	char *opcodes[] = {"push", "pop", "pall", "pint",
-		"add", "sub", "div", "mul", "mod", "swap", "#", "nop", NULL};
+		"add", "sub", "div", "mul", "mod", "swap", "pchar", "#", "nop", NULL};
 	Op_func const operations[] = {push, pop, pall, pint,
-		add, sub, _div, mul, mod, swap, comment, nop, NULL};
+		add, sub, _div, mul, mod, swap, pchar, comment, nop, NULL};
 
-	instruction_t *mapped = malloc(sizeof(instruction_t) * 13);
+	instruction_t *mapped = malloc(sizeof(instruction_t) * 14);
 	/* Memory allocation failed */
 	if (!mapped)
 	{

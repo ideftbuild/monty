@@ -126,6 +126,8 @@ void handle_errors(memory_record *memory, u_int line_number)
 		mul_error(memory, line_number);
 	if (!strcmp(opcode, "mod"))
 		mod_error(memory, line_number);
+	if (!strcmp(opcode, "pchar"))
+		pchar_error(memory, line_number);
 	/* Handle other operation errors */
 }
 

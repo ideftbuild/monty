@@ -12,3 +12,19 @@
  */
 void comment(stack_t **stack, u_int line_number)
 { (void)stack, (void)line_number; }
+
+/**
+ * pchar_error - Prints the char at the top of the stack
+ *
+ * @stack: Reference to the stack
+ * @line_number: Current line in the file
+ *
+ * Return: void
+ */
+void pchar(stack_t **stack, u_int line_number)
+{
+	/* unsused variables */
+	(void)line_number;
+
+	printf("%c\n", (*stack)->n);
+}
