@@ -91,11 +91,12 @@ instruction_t *create_map_structure(FILE *file)
 	int i;
 
 	char *opcodes[] = {"push", "pop", "pall", "pint",
-		"add", "sub", "div", "mul", "mod", "swap", "pchar", "#", "nop", NULL};
+		"add", "sub", "div", "mul", "mod", "swap", "pchar", "pstr",
+		"#", "nop", NULL};
 	Op_func const operations[] = {push, pop, pall, pint,
-		add, sub, _div, mul, mod, swap, pchar, comment, nop, NULL};
+		add, sub, _div, mul, mod, swap, pchar, pstr, comment, nop, NULL};
 
-	instruction_t *mapped = malloc(sizeof(instruction_t) * 14);
+	instruction_t *mapped = malloc(sizeof(instruction_t) * 15);
 	/* Memory allocation failed */
 	if (!mapped)
 	{
@@ -103,7 +104,6 @@ instruction_t *create_map_structure(FILE *file)
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}
-
 	/* Assign */
 	i = 0;
 	while (opcodes[i])
@@ -112,7 +112,6 @@ instruction_t *create_map_structure(FILE *file)
 		mapped[i].f = operations[i];
 		i++;
 	}
-
 	/* NULL terminate */
 	mapped[i].opcode = NULL;
 	mapped[i].f = NULL;

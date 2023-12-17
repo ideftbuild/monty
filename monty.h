@@ -90,6 +90,7 @@ void pop(stack_t **, u_int);
 void pint(stack_t **, u_int);
 void _div(stack_t **, u_int);
 void swap(stack_t **, u_int);
+void pstr(stack_t **, u_int);
 void pchar(stack_t **, u_int);
 void delete_stack(stack_t **);
 void comment(stack_t **, u_int);
