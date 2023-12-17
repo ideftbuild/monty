@@ -108,7 +108,7 @@ void add_error(memory_record *, u_int);
 void div_error(memory_record *, u_int);
 void push_error(memory_record *, u_int);
 void pint_error(memory_record *, u_int);
-void swap_error(memory_record *, u_int );
+void swap_error(memory_record *, u_int);
 void pchar_error(memory_record *, u_int);
 void handle_errors(memory_record *, u_int);
 instruction_t *create_map_structure(FILE *);
