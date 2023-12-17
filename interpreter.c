@@ -53,32 +53,6 @@ void interpret(FILE *file, stack_t **stack)
 }
 
 /**
- * get_operation - Get the function that correctly maps to the opcode
- *
- * @opcode: The opcode
- * @mapped: The structure that maps opcode to function
- *
- * Return: The function
- */
-Op_func get_operation(const char *opcode, instruction_t *mapped)
-{
-	int i = 0;
-
-	while (mapped[i].opcode)
-	{
-		if (!strcmp(mapped[i].opcode, opcode))
-			return (mapped[i].f);
-		i++;
-	}
-
-	/* For commenting of lines only */
-	if (!strncmp(opcode, "#", 1))
-		return (comment);
-
-	return (NULL);
-}
-
-/**
  * create_map_structure - Creates a map structure that maps
  * opcode to it respective functions and store in an array
  *
@@ -92,11 +66,12 @@ instruction_t *create_map_structure(FILE *file)
 
 	char *opcodes[] = {"push", "pop", "pall", "pint",
 		"add", "sub", "div", "mul", "mod", "swap", "pchar", "pstr",
-		"#", "nop", NULL};
+		"#", "rotl", "rotr", "nop", NULL};
 	Op_func const operations[] = {push, pop, pall, pint,
-		add, sub, _div, mul, mod, swap, pchar, pstr, comment, nop, NULL};
+		add, sub, _div, mul, mod, swap, pchar, pstr, comment, rotl,
+		rotr, nop, NULL};
 
-	instruction_t *mapped = malloc(sizeof(instruction_t) * 15);
+	instruction_t *mapped = malloc(sizeof(instruction_t) * 17);
 	/* Memory allocation failed */
 	if (!mapped)
 	{
