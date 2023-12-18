@@ -30,6 +30,7 @@ void interpret(FILE *file, stack_t **stack)
 			free_line(&line), line_number++;
 			continue;
 		}
+
 		/* get the operation to execute */
 		operation = get_operation(reference.tokens[0], mapped);
 
@@ -64,14 +65,14 @@ instruction_t *create_map_structure(FILE *file)
 {
 	int i;
 
-	char *opcodes[] = {"push", "pop", "pall", "pint",
+	char *opcodes[] = {"stack", "queue", "push", "pop", "pall", "pint",
 		"add", "sub", "div", "mul", "mod", "swap", "pchar", "pstr",
 		"#", "rotl", "rotr", "nop", NULL};
-	Op_func const operations[] = {push, pop, pall, pint,
+	Op_func const operations[] = {stack, queue, push, pop, pall, pint,
 		add, sub, _div, mul, mod, swap, pchar, pstr, comment, rotl,
 		rotr, nop, NULL};
 
-	instruction_t *mapped = malloc(sizeof(instruction_t) * 17);
+	instruction_t *mapped = malloc(sizeof(instruction_t) * 19);
 	/* Memory allocation failed */
 	if (!mapped)
 	{
@@ -92,4 +93,27 @@ instruction_t *create_map_structure(FILE *file)
 	mapped[i].f = NULL;
 
 	return (mapped);
+}
+
+/**
+ * check_instruction - Checks if the instruction passed is valid
+ *
+ * @operation: Operation to perform
+ * @opcode: The opcode
+ * @line_number: current line number
+ *
+ * Return: 1 if the instruction is unknown, 0 otherwise
+ */
+int check_instruction(Op_func operation, char *opcode, u_int line_number)
+{
+	/* instruction is not valid */
+	if (!operation)
+	{
+		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
+				line_number, opcode);
+		deleteTokens();
+		return (1);
+	}
+
+	return (0);
 }

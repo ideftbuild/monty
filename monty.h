@@ -7,6 +7,11 @@
 #include <string.h>
 #include <unistd.h>
 
+typedef enum {
+	STACK,
+	QUEUE
+} Mode;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,7 +42,12 @@ typedef struct store
 {
 	char **tokens;
 
-	/* first and last node in the list */
+	Mode mode;
+	/* first and last node in the queue */
+	stack_t *front;
+	stack_t *back;
+
+	/* first and last node in the stack */
 	stack_t *tail;
 	stack_t *head;
 } store;
@@ -93,7 +103,10 @@ void swap(stack_t **, u_int);
 void rotr(stack_t **, u_int);
 void pstr(stack_t **, u_int);
 void rotl(stack_t **, u_int);
+void stack(stack_t **, u_int);
 void pchar(stack_t **, u_int);
+void stack(stack_t **, u_int);
+void queue(stack_t **, u_int);
 void delete_stack(stack_t **);
 void comment(stack_t **, u_int);
 void free_records(memory_record *);

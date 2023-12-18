@@ -2,30 +2,6 @@
 #include "utility.h"
 
 /**
- * check_instruction - Checks if the instruction passed is valid
- *
- * @operation: Operation to perform
- * @opcode: The opcode
- * @line_number: current line number
- *
- * Return: 1 if the instruction is unknown, 0 otherwise
- */
-int check_instruction(Op_func operation, char *opcode, u_int line_number)
-{
-	/* instruction is not valid */
-	if (!operation)
-	{
-		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
-				line_number, opcode);
-		deleteTokens();
-		return (1);
-	}
-
-	return (0);
-}
-
-
-/**
  * nop - Doesn’t do anything.
  *
  * @stack: Reference to the stack
@@ -95,4 +71,37 @@ void rotr(stack_t **stack, u_int line_number)
 	*stack = tail;
 	reference.tail = *stack;
 	reference.head = head;
+}
+
+/**
+ * queue -  sets the format of the data to a queue (FIFO).
+ *
+ * @stack: A reference to the stack
+ * @line_number: Current line number
+ *
+ * Return: void
+ */
+void queue(stack_t **stack, u_int line_number)
+{
+
+	(void)stack;
+	(void)line_number;
+
+	reference.mode = QUEUE;
+}
+
+/**
+ * stack -  sets the format of the data to a stack (LIFO).
+ *
+ * @stack: A reference to the stack
+ * @line_number: Current line number
+ *
+ * Return: void
+ */
+void stack(stack_t **stack, u_int line_number)
+{
+	(void)stack;
+	(void)line_number;
+
+	reference.mode = STACK;
 }

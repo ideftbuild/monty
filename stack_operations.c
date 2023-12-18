@@ -31,12 +31,18 @@ void push(stack_t **stack, unsigned int line_number)
 	if (!*stack)
 	{
 		*stack = element;
-		reference.head =  *stack;
-		reference.tail = reference.head;
+		reference.front = *stack, reference.back = *stack;
+		reference.head =  *stack, reference.tail = *stack;
+	}
+	else if (reference.mode)
+	{ /* insertion for a queue */
+		element->prev = reference.back;
+		reference.back->next = element;
+		element->next = NULL;
+		reference.back = element;
 	}
 	else
-	{
-	/* insertion at the beginning */
+	{ /* insertion at the beginning */
 		(*stack)->prev = element;
 		element->next = *stack;
 		element->prev = NULL;
